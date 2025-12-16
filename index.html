@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-localize-id="meta-title">FIT-X-STETICS - Personalized Fitness Guidance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav id="global-nav">
+        <a href="#" onclick="showPage('landing-page', this)" class="nav-logo">FIT-X-STETICS</a>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('landing-page', this)" data-page="landing-page" class="active" data-localize-id="nav-home">HOME</a>
+            <a href="#" onclick="showPage('input-form', this)" data-page="input-form" data-localize-id="nav-input">INPUT</a>
+            <a href="#" onclick="showPage('diet-plan', this)" data-page="diet-plan" data-localize-id="nav-diet">DIET PLAN</a>
+            <a href="#" onclick="showPage('exercise-plan', this)" data-page="exercise-plan" data-localize-id="nav-exercise">EXERCISE PLAN</a>
+            <a href="#" onclick="showPage('admin-info', this)" data-page="admin-info" data-localize-id="nav-admin-info">ADMIN INFO</a>
+            <a href="#" onclick="showPage('reviews-page', this)" data-page="reviews-page" data-localize-id="nav-reviews">REVIEWS</a> 
+            <a href="#" onclick="showPage('admin-login', this)" data-page="admin-login" data-localize-id="nav-admin-login">ADMIN LOGIN</a>
+            <div class="language-selector-container">
+                <label for="language-select" data-localize-id="lang-label">Language:</label>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="ja">日本語 (Japanese)</option>
+                    <option value="ko">한국어 (Korean)</option>
+                    <option value="zh">中文 (Chinese)</option>
+                    <option value="id">Bahasa Indonesia (Indonesian)</option>
+                    <option value="th">ภาษาไทย (Thai)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="pt">Português (Portuguese)</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <section id="landing-page" class="page active">
+        <div class="container hero">
+            <h1 id="landing-title" data-localize-id="landing-title">FIT-X-STETICS</h1>
+            <p id="landing-subtitle" data-localize-id="landing-subtitle">Your personalized journey to peak health and wellness. Click 'INPUT' to begin your assessment.</p>
+            <button class="primary-btn" onclick="showPage('input-form')" data-localize-id="landing-btn">Get Started</button>
+        </div>
+    </section>
+
+    <section id="input-form" class="page hidden">
+        <div class="container form-box">
+            <h2 data-localize-id="input-header">ENTER YOUR DETAILS</h2>
+            <form id="metrics-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" data-localize-id="label-name">NAME</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="height" data-localize-id="label-height">HEIGHT (CM)</label>
+                        <input type="number" id="height" required min="50" max="300" step="0.1">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight" data-localize-id="label-weight">WEIGHT (KG)</label>
+                        <input type="number" id="weight" required min="10" max="500" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" data-localize-id="label-age">AGE (YEARS)</label>
+                        <input type="number" id="age" required min="12" max="100">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender" data-localize-id="label-gender">GENDER</label>
+                        <select id="gender" required>
+                            <option value="" disabled selected data-localize-id="pref-select">Select...</option>
+                            <option value="male" data-localize-id="gender-male">Male</option>
+                            <option value="female" data-localize-id="gender-female">Female</option>
+                            <option value="trans" data-localize-id="gender-trans">Trans</option>
+                            <option value="other" data-localize-id="gender-other">Not Specified (Homo/Other)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="diet-preference" data-localize-id="label-preference">DIET PREFERENCE</label>
+                        <select id="diet-preference" required>
+                            <option value="" disabled selected data-localize-id="pref-select">Select...</option>
+                            <option value="vegetarian" data-localize-id="pref-veg">Vegetarian</option>
+                            <option value="non-vegetarian" data-localize-id="pref-nonveg">Non-Vegetarian</option>
+                            <option value="both" data-localize-id="pref-both">Both</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="primary-btn" data-localize-id="input-submit-btn">GENERATE PLAN</button>
+                    <button type="reset" class="secondary-btn" data-localize-id="input-reset-btn">RESET FORM</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="result-page" class="page hidden">
+        <div class="container result-box">
+            <h2 data-localize-id="bmi-header">BMI RESULT</h2>
+            <div id="bmi-result-content" class="plan-details">
+                </div>
+            <div class="button-group">
+                <button class="primary-btn" onclick="showPage('diet-plan')" data-localize-id="nav-diet">GO TO DIET PLAN</button>
+                <button class="primary-btn" onclick="showPage('exercise-plan')" data-localize-id="nav-exercise">GO TO EXERCISE PLAN</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="diet-plan" class="page hidden">
+        <div class="container result-box">
+            <h2 data-localize-id="diet-plan-header">YOUR PERSONALIZED DIET PLAN</h2>
+            <div id="diet-plan-content" class="plan-details">
+                </div>
+        </div>
+    </section>
+
+    <section id="exercise-plan" class="page hidden">
+        <div class="container result-box">
+            <h2 data-localize-id="exercise-plan-header">YOUR PERSONALIZED EXERCISE PLAN</h2>
+            <div id="exercise-plan-content" class="plan-details">
+                </div>
+        </div>
+    </section>
+
+    <section id="admin-info" class="page hidden">
+        <div class="container admin-profile">
+            <div class="admin-details">
+                <h2>ADMIN/DEVELOPER INFO <i class="fas fa-user-tie"></i></h2>
+                <h3>Abhishek Negi</h3>
+                <p><strong>Role:</strong> Lead Fitness AI Developer & Trainer</p>
+                <p><strong>Bio:</strong> Passionate about leveraging data science to create personalized and effective fitness and nutrition programs. Certified personal trainer with 5+ years of experience in custom regimen development.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/abhishek-negi-2ab0b931a " target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/unfit__negi?igsh=MXFpNWczdGRnN2lvZw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:nabhi2260@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="admin-images">
+                <img src="Screenshot 2025-12-15 060851.png" alt="Admin Image 1" class="admin-img">
+                <img src="Screenshot 2025-12-15 061322.png" alt="Admin Image 2" class="admin-img">
+                <img src="Screenshot_20251215_194601_Instagram.jpg" alt="Admin Image 3" class="admin-img">
+                <img src="AISelect_20251215_192118_Instagram.jpg" alt="Admin Image 4" class="admin-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews-page" class="page hidden">
+        <div class="container review-panel">
+            <h2 data-localize-id="review-header">USER REVIEWS & FEEDBACK</h2>
+            <form id="review-form">
+                <div class="form-group">
+                    <label for="reviewer-name" data-localize-id="label-reviewer-name">YOUR NAME</label>
+                    <input type="text" id="reviewer-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-text" data-localize-id="label-review-text">YOUR FEEDBACK</label>
+                    <textarea id="review-text" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="primary-btn" data-localize-id="review-submit-btn">SUBMIT REVIEW</button>
+            </form>
+            
+            <div class="reviews-list">
+                <h3 data-localize-id="review-list-header">Latest Reviews</h3>
+                <div class="review-item">
+                    <p class="placeholder-review">"The diet plan was incredibly easy to follow and yielded great results. Thank you, Abhishek!"</p>
+                    <p class="reviewer-name">- Happy Client</p>
+                </div>
+                <div class="review-item">
+                    <p class="placeholder-review">"I love the personalized exercise routines. They adapt perfectly to my fitness level."</p>
+                    <p class="reviewer-name">- Fitness Enthusiast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin-login" class="page hidden">
+        <div class="container form-box">
+            <h2 data-localize-id="admin-login-header">ADMIN LOGIN <i class="fas fa-user-shield"></i></h2>
+            <form id="admin-login-form"> 
+                <div class="form-group">
+                    <label for="admin-id" data-localize-id="label-admin-id">ADMIN USER ID</label>
+                    <input type="text" id="admin-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password" data-localize-id="label-admin-password">PASSWORD</label>
+                    <input type="password" id="admin-password" required>
+                </div>
+                <button type="submit" class="primary-btn" data-localize-id="admin-login-btn">LOGIN</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="admin-data" class="page hidden">
+        <div class="container result-box">
+            <h2 data-localize-id="admin-data-header">USER METRICS DATABASE <i class="fas fa-database"></i></h2>
+            <div id="user-data-container" class="plan-details">
+                <p style="text-align: center;" data-localize-id="admin-auth-text">Authenticating...</p>
+            </div>
+            <button class="primary-btn" style="width: 50%; margin: 20px auto 0;" onclick="showPage('admin-login')" data-localize-id="admin-logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

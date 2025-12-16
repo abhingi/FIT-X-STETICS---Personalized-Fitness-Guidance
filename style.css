@@ -1,0 +1,513 @@
+:root {
+    /* Dark Aesthetic Palette with RED Accent */
+    --primary-color: #ff5722; /* Deep Red/Orange - Vibrant Primary Accent */
+    --accent-color: #00bcd4; /* Cyan/Turquoise - Secondary Accent */
+    --background-color: #121212; /* Very Dark Background */
+    --card-bg: #1e1e1e; /* Dark Gray Card Background */
+    --text-color: #f0f0f0; /* Light Gray Text */
+    --input-bg: #2b2b2b; /* Slightly lighter input fields */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+    --transition: 0.5s ease-in-out;
+    --nav-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+body {
+    background-color: var(--background-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==================== GLOBAL NAVIGATION BAR ==================== */
+#global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    padding: 10px 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-transform: uppercase;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* ==================== PAGE LAYOUTS & CONTAINERS ==================== */
+.page {
+    padding-top: calc(var(--nav-height) + 40px); /* Space for fixed nav */
+    min-height: 100vh;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+.page.hidden {
+    display: none;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==================== HERO/LANDING STYLES ==================== */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+/* ==================== FORM STYLES ==================== */
+.form-box, .result-box, .review-panel, .admin-profile {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+}
+
+h2 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.primary-btn:hover {
+    background-color: #e64a19; /* Slightly darker red */
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+}
+
+.secondary-btn {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: #383838;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== RESULT & PLAN STYLES ==================== */
+.result-box h3 {
+    color: var(--text-color);
+    margin-top: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+}
+
+.plan-details {
+    padding: 20px;
+}
+
+.plan-details p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.plan-details strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.status-underweight { background-color: rgba(0, 188, 212, 0.3); color: #00bcd4; }
+.status-normal { background-color: rgba(76, 175, 80, 0.3); color: #4CAF50; }
+.status-overweight { background-color: rgba(255, 152, 0, 0.3); color: #ff9800; }
+.status-obese { background-color: rgba(244, 67, 54, 0.3); color: #f44336; }
+
+
+.diet-table, .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.diet-table th, .diet-table td, .data-table th, .data-table td {
+    padding: 15px;
+    border: 1px solid var(--input-bg);
+    vertical-align: top;
+}
+
+.diet-table th, .data-table th {
+    background-color: var(--input-bg);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.plan-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--input-bg);
+    border-radius: 8px;
+}
+
+.plan-summary h4 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.plan-details-item {
+    margin-top: 30px;
+    padding: 15px;
+    border-left: 4px solid var(--primary-color);
+    background-color: #1a1a1a;
+    border-radius: 5px;
+}
+
+.schedule-list {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.schedule-list li {
+    background-color: var(--input-bg);
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    color: var(--accent-color);
+}
+
+/* ==================== ADMIN INFO STYLES (UPDATED) ==================== */
+.admin-profile {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.admin-details {
+    flex: 2;
+}
+
+/* NEW STYLES FOR ADMIN IMAGES */
+.admin-images {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 500px; /* Constrain the size of the grid */
+    margin: 0 auto; /* Center the grid container */
+}
+
+.admin-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Keep images square */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.admin-img:hover {
+    transform: scale(1.03);
+}
+/* END NEW STYLES */
+
+.admin-details h3 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.admin-details p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* ==================== REVIEW STYLES ==================== */
+.reviews-list {
+    margin-top: 40px;
+}
+
+.reviews-list h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--input-bg);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.review-item {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.review-item p {
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #ccc;
+}
+
+.review-item .reviewer-name {
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color); 
+    font-style: normal;
+    font-size: 0.9rem;
+}
+
+
+/* ==================== LANGUAGE SELECTOR STYLES ==================== */
+.language-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Spacing between "Language:" label and the select box */
+    margin-left: 20px; /* Separates the selector from the main nav links */
+}
+
+.language-selector-container label {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    /* Make sure the label is inline with the select box */
+    margin-right: 5px;
+}
+
+#language-select {
+    padding: 5px 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: var(--card-bg); /* Use a dark background color */
+    color: var(--text-color); /* Light text for visibility */
+    font-size: 0.9rem;
+    cursor: pointer;
+    /* Remove default system appearance for better styling control */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    transition: var(--transition);
+}
+
+#language-select:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(0, 188, 212, 0.5); /* Shadow using secondary accent color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #global-nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        align-items: flex-start;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+    .nav-links a {
+        margin: 5px 10px;
+        font-size: 0.75rem;
+    }
+    .page {
+        padding-top: 150px; /* Adjust padding for the taller fixed nav */
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .diet-table th, .diet-table td {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+    .admin-profile {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .admin-images {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
+    /* End of Admin Images Responsive Styles */
+    
+    .data-table th, .data-table td {
+        font-size: 0.7rem;
+        padding: 5px 3px;
+    }
+    /* Mobile style for exercise content */
+    .exercise-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .language-selector-container {
+        margin: 10px 0 0 0; /* Add margin on mobile when nav links wrap */
+        justify-content: center;
+        width: 100%;
+    }
+}
