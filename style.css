@@ -24,7 +24,7 @@
 body {
     background-color: var(--background-color);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevents horizontal scrolling unless explicitly needed */
 }
 
 /* ==================== GLOBAL NAVIGATION BAR ==================== */
@@ -101,9 +101,17 @@ body {
 }
 
 .container {
+    width: 90%; /* ADDED: Use 90% width for fluidity */
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+}
+
+/* ADDED: General image responsiveness rule */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* ==================== HERO/LANDING STYLES ==================== */
@@ -261,6 +269,11 @@ h2 {
 .status-overweight { background-color: rgba(255, 152, 0, 0.3); color: #ff9800; }
 .status-obese { background-color: rgba(244, 67, 54, 0.3); color: #f44336; }
 
+/* ADDED: Wrapper for scrollable tables on mobile */
+.table-responsive {
+    overflow-x: auto; /* Enables horizontal scrollbar */
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
 
 .diet-table, .data-table {
     width: 100%;
@@ -454,6 +467,28 @@ h2 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    /* Full-width Form Elements on Mobile (New addition) */
+    .form-group {
+        width: 100%; /* Ensures stacked groups take full width */
+        margin-bottom: 15px; /* Adds space between stacked form groups */
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="password"],
+    .form-group select,
+    .form-group textarea,
+    .primary-btn, 
+    .secondary-btn {
+        width: 100%; /* Force full width on inputs/buttons */
+    }
+
+    /* Table Responsiveness */
+    .diet-table, .data-table {
+        min-width: 600px; /* ADDED: Ensures table content doesn't crush, enabling scroll */
+    }
+    
+    /* Existing rules: */
     #global-nav {
         flex-direction: column;
         height: auto;
