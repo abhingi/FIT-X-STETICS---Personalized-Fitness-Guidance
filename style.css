@@ -497,13 +497,17 @@ h2 {
     }
     .nav-links {
         flex-wrap: wrap;
-        margin-top: 10px;
+        /* Increase margin-top to create separation from the logo/title */
+        margin-top: 15px; 
         justify-content: center;
         width: 100%;
+        /* Add some vertical space to ensure links don't crowd when wrapping */
+        line-height: 1.8; 
     }
     .nav-links a {
-        margin: 5px 10px;
-        font-size: 0.75rem;
+        /* Adjusted margin and font size to allow links to fit on two rows on small screens */
+        margin: 5px 8px; /* Slightly tighter horizontal spacing */
+        font-size: 0.7rem; /* Smaller font size for better fit */
     }
     .page {
         padding-top: 150px; /* Adjust padding for the taller fixed nav */
